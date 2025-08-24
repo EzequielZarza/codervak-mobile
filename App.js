@@ -1,24 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, FlatList, Image } from 'react-native';
-import categories from './src/data/categories.json';
+import { StyleSheet, View } from 'react-native';
 import Header from './src/Header';
-import FlatCard from './src/FlatCard';
+import CategoriesScreen from './src/screens/CategoriesScreen';
 
 export default function App() {
-  const renderCategoriesItem = (({item}) => (
-  <FlatCard>
-    <Text>{item?.title}</Text>
-    <Image width={100} height={50} resizeMode='contain' source={{uri: item?.image}}></Image>
-  </FlatCard>))
-
+  
   return (
     <View style={styles.container}>
       <Header title={'Codervak'}/>
-      <FlatList
-        data={categories}
-        renderItem={renderCategoriesItem}
-        keyExtractor={item=>item.id}
-      />
+      <CategoriesScreen/>
       <StatusBar style="light" />
     </View>
   );
