@@ -1,0 +1,22 @@
+[
+  {
+      "id":1,
+      "title":"Cars",
+      "image":"https://i.postimg.cc/8C5t78FJ/ford-mustang.jpg"
+  },
+  {
+      "id":2,
+      "title":"Motorcycles",
+      "image":"https://i.postimg.cc/tgQ4TbvD/bmw-1250.jpg"
+  },
+  {
+      "id":3,
+      "title":"SUVs",
+      "image":"https://i.postimg.cc/x840SVbv/audi-q3.jpg"
+  },
+  {
+      "id":4,
+      "title":"Pick Ups",
+      "image":"https://i.postimg.cc/1tRPn3G0/chevrolet-silverado.jpg"
+  }
+]
