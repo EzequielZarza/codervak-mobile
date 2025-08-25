@@ -4,6 +4,7 @@
       "category": "Cars",
       "title": "Volkswagen Golf GTI",
       "description": "El mitico GTI full chipeado, pistero de pura cepa",
+      "image": "https://i.postimg.cc/g28fNn3W/golf-gti.webp",
       "price": 35000,
       "stock": 3
   },
@@ -12,6 +13,7 @@
       "category": "Motorcycles",
       "title": "Kawasaki Ninja",
       "description": "alta moto bien picante",
+      "image": "https://i.postimg.cc/7LNjrdBt/kawasaki-ninja.webp",
       "price": 15000,
       "stock": 5
   },
@@ -20,6 +22,7 @@
       "category": "SUVs",
       "title": "Jeep Compass",
       "description": "La jeepeta full full",
+      "image": "https://i.postimg.cc/bJNWygWy/jeep-compass.webp",
       "price": 25000,
       "stock": 7
   },
@@ -28,6 +31,7 @@
       "category": "Pick Ups",
       "title": "RAM 1500",
       "description": "La RAM bien polenta",
+      "image": "https://i.postimg.cc/Jn6gGJCb/ram-1500.jpg",
       "price": 50000,
       "stock": 8
   },
@@ -36,6 +40,7 @@
       "category": "Cars",
       "title": "Renault Fluence GT",
       "description": "El Primer auto homologado por Renault RS fuera de francia, nave total",
+      "image": "https://i.postimg.cc/vTCNvsBT/fluence-gt.jpg",
       "price": 12000,
       "stock": 13
   },
@@ -44,6 +49,7 @@
       "category": "Motorcycles",
       "title": "BMW R 1250 GS",
       "description": "La Moto sport touring mas bestia que te podes comprar",
+      "image": "https://i.postimg.cc/tgQ4TbvD/bmw-1250.jpg",
       "price": 60000,
       "stock": 7
   },
@@ -52,6 +58,7 @@
       "category": "SUVs",
       "title": "Pulse Abarth",
       "description": "El pulse deportivizado por la division Abarth, que mas queres?!",
+      "image": "https://i.postimg.cc/vHfsSqdk/pulse-abarth.webp",
       "price": 35000,
       "stock": 6
   },
@@ -60,7 +67,44 @@
       "category": "Pick Ups",
       "title": "Toyota Hilux",
       "description": "Legendaria por donde la mires, no hace falta decir nada!",
+      "image": "https://i.postimg.cc/k513tLx6/toyota-hilux.jpg",
       "price": 45000,
       "stock": 12
+  },
+  {
+    "id": "audi-q3",
+    "category": "SUVs",
+    "title":  "Audi Q3",
+    "description": "La navesota de Audi, una nave full full",
+    "image": "https://i.postimg.cc/x840SVbv/audi-q3.jpg",
+    "price": 120000,
+    "stock": 4
+  },
+  {
+    "id": "brabus-1300r",
+    "category": "Motorcycles",
+    "title": "Brabus 1300 R",
+    "description": "Esta brava la brabus!",
+    "image": "https://i.postimg.cc/h4JzhB9m/brabus-1300r.jpg",
+    "price": 60000,
+    "stock": 9
+  },
+  {
+    "id": "chevrolet-silverado",
+    "category": "Pick Ups",
+    "title": "Chevrolet Silverado",
+    "description": "Mira lo que se armo chevrolet!!",
+    "image": "https://i.postimg.cc/1tRPn3G0/chevrolet-silverado.jpg",
+    "price": 75000,
+    "stock": 6
+  },
+  {
+    "id": "ford-mustang",
+    "category": "Cars",
+    "title": "Ford Mustang",
+    "description": "El caballote pulenta de ford, indomable!",
+    "image": "https://i.postimg.cc/8C5t78FJ/ford-mustang.jpg",
+    "price": 80000,
+    "stock": 7
   }
 ]
