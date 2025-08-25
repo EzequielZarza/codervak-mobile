@@ -4,11 +4,11 @@ import { useEffect, useState } from 'react';
 import FlatCard from '../FlatCard';
 import { colors } from "../global/colors";
 
-const ProductsScreen = () => {
+const ProductsScreen = ({selectedCategory}) => {
   const [selectedProducts, setSelectedProducts] = useState([]);
 
   useEffect(() => {
-    const productsInCategory = products.filter(({category}) => category==='Cars');
+    const productsInCategory = products.filter(({category}) => category.toLowerCase() === selectedCategory.toLowerCase());
     setSelectedProducts(productsInCategory);
   },[]);
 
