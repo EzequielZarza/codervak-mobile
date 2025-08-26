@@ -1,4 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, FlatList, Image, Pressable } from "react-native";
 import Header from './src/Header';
 import CategoriesScreen from './src/screens/CategoriesScreen';
 import ProductsScreen from './src/screens/ProductsScreen';
@@ -10,7 +11,11 @@ export default function App() {
   return (
     <>
       <Header title={'Codervak'}/>
-      {selectedCategory ? <ProductsScreen selectedCategory={selectedCategory}/> : <CategoriesScreen setSelecedCategory={setSelecedCategory}/>}
+      {selectedCategory ?
+        <ProductsScreen setSelecedCategory={setSelecedCategory} selectedCategory={selectedCategory}/>
+        : 
+          <CategoriesScreen setSelecedCategory={setSelecedCategory}/>
+      }
       <StatusBar style="light" />
     </>
   );
