@@ -1,8 +1,24 @@
 import { Text, FlatList, Image, View, StyleSheet, Pressable } from 'react-native';
 import categories from '../data/categories.json';
+import products from '../data/products.json'
 import FlatCard from '../FlatCard';
+import { useState, useEffect } from 'react';
 
 const CategoriesScreen = ({setSelecedCategory}) => {
+
+  const [dynamicCategories, setDynamicCategories] = useState([])
+  useEffect(() => {
+    const shuffledProducts = [...products].sort(() => Math.random() - 0.5);
+    const updatedCategories = categories.reduce((accum,curr) => {
+      const filteredProduct = shuffledProducts.find(product => product.category === curr.title);
+      const updatedCategory = {...curr, image: filteredProduct.image}
+      accum = [...accum, updatedCategory]
+      return accum
+    },[])
+    setDynamicCategories(updatedCategories)
+  },[])
+  
+
   const renderCategoriesItem = (({item}) => (
     <Pressable onPress={() => setSelecedCategory(item?.title)}>
       <FlatCard>
@@ -14,7 +30,7 @@ const CategoriesScreen = ({setSelecedCategory}) => {
 
   return (
     <FlatList
-      data={categories}
+      data={dynamicCategories.length > 0 ? dynamicCategories : categories}
       renderItem={renderCategoriesItem}
       keyExtractor={item=>item.id}
     />
