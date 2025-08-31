@@ -10,7 +10,7 @@ const Search = ({setKeyword}) =>
           placeholder='Buscar vehiculo'
           onChangeText={(text) => {setKeyword(text)}}
       />
-      <Octicons name="search" size={32} color={colors.darkGray} />
+      <Octicons style={styles.searchIcon} name="search"  />
     </View>
   </>
 
@@ -29,7 +29,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.darkGray,
     borderRadius: 16,
-    minWidth: "85%",
-    fontFamily: 'Space-Mono-Regular'
+    minWidth: "90%",
+    fontFamily: 'Space-Mono-Regular',
+    paddingLeft: 24
+  },
+  searchIcon :{
+    position: 'absolute',
+    left: 8,
+    color: colors.darkGray
   }
 })
