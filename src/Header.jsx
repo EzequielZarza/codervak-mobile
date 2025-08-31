@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    marginTop: 8,
+    marginTop: 16,
     fontSize: 24,
     color: colors.white,
     fontFamily: 'Space-Mono-Bold'

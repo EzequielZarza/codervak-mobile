@@ -3,8 +3,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 import { StyleSheet, Text, View, FlatList, Image, Pressable } from "react-native";
 import Header from './src/Header';
-import CategoriesScreen from './src/screens/CategoriesScreen';
-import ProductsScreen from './src/screens/ProductsScreen';
+import ShopStackNavigator from './src/navigation/ShopStackNavigator';
 import { useEffect, useState } from 'react';
 
 SplashScreen.preventAutoHideAsync();
@@ -24,15 +23,14 @@ export default function App() {
     };
   }, [loaded, error]);
 
+  if (!loaded && !error) {
+    return null;
+  }
+  
   return (
     <>
       <Header title={'Codervak'}/>
-      {selectedCategory ?
-        <ProductsScreen setSelecedCategory={setSelecedCategory} selectedCategory={selectedCategory}/>
-        : 
-          <CategoriesScreen setSelecedCategory={setSelecedCategory}/>
-      }
-      <StatusBar style="light" />
+      <ShopStackNavigator/>
     </>
   );
 }

@@ -1,11 +1,11 @@
 import { Text, FlatList, Image, View, StyleSheet, Pressable } from 'react-native';
-import categories from '../data/categories.json';
-import products from '../data/products.json'
-import FlatCard from '../FlatCard';
+import categories from '../../data/categories.json';
+import products from '../../data/products.json'
+import FlatCard from '../../FlatCard';
 import { useState, useEffect } from 'react';
-import CodervakTypography from '../CodervakTypography';
+import CodervakTypography from '../../CodervakTypography';
 
-const CategoriesScreen = ({setSelecedCategory}) => {
+const CategoriesScreen = ({navigation: {navigate}}) => {
 
   const [dynamicCategories, setDynamicCategories] = useState([])
   useEffect(() => {
@@ -21,7 +21,7 @@ const CategoriesScreen = ({setSelecedCategory}) => {
   
 
   const renderCategoriesItem = (({item}) => (
-    <Pressable onPress={() => setSelecedCategory(item?.title)}>
+    <Pressable onPress={() => navigate('Products', { category: item?.title})}>
       <FlatCard>
         <CodervakTypography>{item?.title}</CodervakTypography>
         <Image width={100} height={50} resizeMode='contain' source={{uri: item?.image}}></Image>

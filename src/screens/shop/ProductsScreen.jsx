@@ -1,12 +1,13 @@
 import { StyleSheet, Text, View, FlatList, Image, Pressable, Button } from "react-native";
-import products from '../data/products.json';
+import products from '../../data/products.json';
 import { useEffect, useState } from 'react';
-import FlatCard from '../FlatCard';
-import { colors } from "../global/colors";
-import Search from "../Search";
-import CodervakTypography from "../CodervakTypography";
+import FlatCard from '../../FlatCard';
+import { colors } from "../../global/colors";
+import Search from "../../Search";
+import CodervakTypography from "../../CodervakTypography";
 
-const ProductsScreen = ({selectedCategory, setSelecedCategory}) => {
+const ProductsScreen = ({route: {params: {category: selectedCategory}}, setSelecedCategory}) => {
+
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [keyword, setKeyword] = useState('')
 
@@ -43,12 +44,12 @@ const ProductsScreen = ({selectedCategory, setSelecedCategory}) => {
   return (
     <>
     <View backgroundColor={colors.lightGray} >
-    <Pressable
+    {/* <Pressable
       onPress={() => setSelecedCategory('')}
       style={styles.button}
       >
       <CodervakTypography fontFamily='Space-Mono-Bold' style={styles.buttonText}> Volver al menu principal</CodervakTypography>
-    </Pressable>
+    </Pressable> */}
     <Search setKeyword={setKeyword}/>
     </View>
     <FlatList
