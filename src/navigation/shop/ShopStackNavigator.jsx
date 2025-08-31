@@ -1,12 +1,12 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack"; 
-import { CategoriesScreen, ProductDetailsScreen, ProductsScreen } from "../screens";
-import { colors } from "../global/colors";
+import { CategoriesScreen, ProductDetailsScreen, ProductsScreen } from "../../screens";
+import { colors } from "../../global/colors";
 
 const {Navigator, Screen} = createNativeStackNavigator();
 
 const ShopStackNavigator = () => 
-  <NavigationContainer>
+  // <NavigationContainer>
     <Navigator
       initialRouteName='Categories'
       screenOptions={{
@@ -24,9 +24,9 @@ const ShopStackNavigator = () =>
     >
       <Screen name='Categories' component={CategoriesScreen} />
       <Screen name='Products' component={ProductsScreen}/>
-      {/* <Screen name='ProductDetails' component={ProductDetailsScreen}/> */}
+      <Screen name='ProductDetails' component={ProductDetailsScreen}/>
     </Navigator>
-  </NavigationContainer>
+  // </NavigationContainer>
 
 export default ShopStackNavigator;
 

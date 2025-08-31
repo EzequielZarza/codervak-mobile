@@ -3,7 +3,9 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 import { StyleSheet, Text, View, FlatList, Image, Pressable } from "react-native";
 import Header from './src/Header';
-import ShopStackNavigator from './src/navigation/ShopStackNavigator';
+// import ShopStackNavigator from './src/navigation/shop/ShopStackNavigator';
+// import CartStackNavigator from './src/navigation/cart/CartStackNavigator';
+import TabsNavigator from './src/navigation/tabs/TabsNavigator';
 import { useEffect, useState } from 'react';
 
 SplashScreen.preventAutoHideAsync();
@@ -26,11 +28,13 @@ export default function App() {
   if (!loaded && !error) {
     return null;
   }
-  
+
   return (
     <>
       <Header title={'Codervak'}/>
-      <ShopStackNavigator/>
+      {/* <ShopStackNavigator/>
+      <CartStackNavigator/> */}
+      <TabsNavigator/>
     </>
   );
 }

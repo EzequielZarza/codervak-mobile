@@ -6,7 +6,7 @@ import { colors } from "../../global/colors";
 import Search from "../../Search";
 import CodervakTypography from "../../CodervakTypography";
 
-const ProductsScreen = ({route: {params: {category: selectedCategory}}, setSelecedCategory}) => {
+const ProductsScreen = ({route: {params: {category: selectedCategory}}, navigation: {navigate}}) => {
 
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [keyword, setKeyword] = useState('')
@@ -22,8 +22,8 @@ const ProductsScreen = ({route: {params: {category: selectedCategory}}, setSelec
   },[keyword]);
 
   const renderCategoriesItem = (({item}) => (
+    <Pressable onPress={() => navigate('ProductDetails')}>
     <View style={styles.container}>
-
       <FlatCard>
         <View style={styles.container}>
           <Image width={150} height={150} resizeMode='center' source={{uri: item?.image}}></Image>
@@ -38,6 +38,7 @@ const ProductsScreen = ({route: {params: {category: selectedCategory}}, setSelec
         </View>
       </FlatCard>
       </View>
+      </Pressable>
 
   ))
 
