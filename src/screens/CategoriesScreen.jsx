@@ -3,6 +3,7 @@ import categories from '../data/categories.json';
 import products from '../data/products.json'
 import FlatCard from '../FlatCard';
 import { useState, useEffect } from 'react';
+import CodervakTypography from '../CodervakTypography';
 
 const CategoriesScreen = ({setSelecedCategory}) => {
 
@@ -22,7 +23,7 @@ const CategoriesScreen = ({setSelecedCategory}) => {
   const renderCategoriesItem = (({item}) => (
     <Pressable onPress={() => setSelecedCategory(item?.title)}>
       <FlatCard>
-        <Text>{item?.title}</Text>
+        <CodervakTypography>{item?.title}</CodervakTypography>
         <Image width={100} height={50} resizeMode='contain' source={{uri: item?.image}}></Image>
       </FlatCard>
   </Pressable>

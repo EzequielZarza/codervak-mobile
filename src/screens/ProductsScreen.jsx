@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import FlatCard from '../FlatCard';
 import { colors } from "../global/colors";
 import Search from "../Search";
+import CodervakTypography from "../CodervakTypography";
 
 const ProductsScreen = ({selectedCategory, setSelecedCategory}) => {
   const [selectedProducts, setSelectedProducts] = useState([]);
@@ -24,15 +25,14 @@ const ProductsScreen = ({selectedCategory, setSelecedCategory}) => {
 
       <FlatCard>
         <View style={styles.container}>
-        <Text>{item?.title}</Text>
-        <Image width={150} height={150} resizeMode='contain' source={{uri: item?.image}}></Image>
+          <Image width={150} height={150} resizeMode='center' source={{uri: item?.image}}></Image>
         </View>
         <View style={styles.container}>
-
-        <Text style={{textAlign: "center", marginLeft: 8}}>{item?.description}</Text>
-        <View style={{marginTop: 16}}>
-        <Text>{`Precio: ${item?.price} US$`}</Text>
-        <Text>{`Stock: ${item?.stock}`}</Text>
+          <CodervakTypography fontFamily='Space-Mono-Bold'>{item?.title}</CodervakTypography>
+          <CodervakTypography style={{textAlign: "center", marginLeft: 8}}>{item?.description}</CodervakTypography>
+          <View style={{marginTop: 16}}>
+          <CodervakTypography>{`Precio: ${item?.price} US$`}</CodervakTypography>
+          <CodervakTypography>{`Stock: ${item?.stock}`}</CodervakTypography>
         </View>
         </View>
       </FlatCard>
@@ -47,7 +47,7 @@ const ProductsScreen = ({selectedCategory, setSelecedCategory}) => {
       onPress={() => setSelecedCategory('')}
       style={styles.button}
       >
-      <Text style={styles.buttonText}> Volver al menu principal</Text>
+      <CodervakTypography fontFamily='Space-Mono-Bold' style={styles.buttonText}> Volver al menu principal</CodervakTypography>
     </Pressable>
     <Search setKeyword={setKeyword}/>
     </View>
@@ -85,6 +85,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontSize: 16,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
     }
 });

@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.darkGray,
     borderRadius: 16,
-    minWidth: "85%"
+    minWidth: "85%",
+    fontFamily: 'Space-Mono-Regular'
   }
 })

@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   title: {
     marginTop: 8,
     fontSize: 24,
-    color: colors.white
+    color: colors.white,
+    fontFamily: 'Space-Mono-Bold'
   }
 })
