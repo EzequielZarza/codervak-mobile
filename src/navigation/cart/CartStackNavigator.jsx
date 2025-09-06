@@ -2,6 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack"; 
 import { CartScreen  } from "../../screens";
 import { colors } from "../../global/colors";
+import Header from "../../Header";
 
 const {Navigator, Screen} = createNativeStackNavigator();
 
@@ -10,6 +11,7 @@ const CartStackNavigator = () =>
     <Navigator
       initialRouteName='Cart'
       screenOptions={{
+        header: (() => (<Header title='Codervak' subtitle='Cart'/>)),
         headerStyle: {
           backgroundColor: colors.lightGray
         },

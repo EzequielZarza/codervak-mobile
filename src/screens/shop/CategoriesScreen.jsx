@@ -1,11 +1,21 @@
 import { Text, FlatList, Image, View, StyleSheet, Pressable } from 'react-native';
-import categories from '../../data/categories.json';
+import { useSelector, useDispatch } from 'react-redux';
 import products from '../../data/products.json'
 import FlatCard from '../../FlatCard';
 import { useState, useEffect } from 'react';
 import CodervakTypography from '../../CodervakTypography';
+import { setSelectedCategory } from '../../store/slices/shopSlice';
 
 const CategoriesScreen = ({navigation: {navigate}}) => {
+
+  const categories = useSelector(({shopReducer: {categories}}) => categories);
+
+  const dispatch = useDispatch();
+
+  const handleCSelectedCategory = ({title}) => {
+    dispatch(setSelectedCategory(title))
+    navigate('Products', { category: title})
+  };
 
   const [dynamicCategories, setDynamicCategories] = useState([])
   useEffect(() => {
@@ -21,7 +31,7 @@ const CategoriesScreen = ({navigation: {navigate}}) => {
   
 
   const renderCategoriesItem = (({item}) => (
-    <Pressable onPress={() => navigate('Products', { category: item?.title})}>
+    <Pressable onPress={() => handleCSelectedCategory(item)}>
       <FlatCard>
         <CodervakTypography>{item?.title}</CodervakTypography>
         <Image width={100} height={50} resizeMode='contain' source={{uri: item?.image}}></Image>

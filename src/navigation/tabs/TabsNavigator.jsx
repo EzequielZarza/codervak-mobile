@@ -8,12 +8,14 @@ import { Entypo } from '@expo/vector-icons';
 const {Navigator, Screen} = createBottomTabNavigator();
 
 const TabsNavigator = () => {
+
   return (
       <NavigationContainer>
         <Navigator screenOptions={{headerShown: false, tabBarStyle: styles.tabBar}}>
           <Screen
             name="Shop"
             component={ShopStackNavigator}
+
             options={{
               tabBarIcon: ()=>(<Entypo name="shop" size={24} color="black" />)
             }}

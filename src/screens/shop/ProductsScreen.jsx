@@ -5,11 +5,14 @@ import FlatCard from '../../FlatCard';
 import { colors } from "../../global/colors";
 import Search from "../../Search";
 import CodervakTypography from "../../CodervakTypography";
+import { useSelector } from "react-redux";
 
-const ProductsScreen = ({route: {params: {category: selectedCategory}}, navigation: {navigate}}) => {
+const ProductsScreen = ({ navigation: {navigate}}) => {
 
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [keyword, setKeyword] = useState('')
+
+  const selectedCategory = useSelector(({shopReducer: {selectedCategory}}) => selectedCategory)
 
   useEffect(() => {
     const productsInCategory = products.filter(({category}) => category.toLowerCase() === selectedCategory.toLowerCase());

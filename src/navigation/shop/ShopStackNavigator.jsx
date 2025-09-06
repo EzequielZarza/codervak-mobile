@@ -2,14 +2,21 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack"; 
 import { CategoriesScreen, ProductDetailsScreen, ProductsScreen } from "../../screens";
 import { colors } from "../../global/colors";
+import Header from "../../Header";
+import { useSelector } from "react-redux";
+
 
 const {Navigator, Screen} = createNativeStackNavigator();
 
-const ShopStackNavigator = () => 
-  // <NavigationContainer>
+const ShopStackNavigator = () => {
+  const selectedCategory = useSelector(({shopReducer: {selectedCategory}}) => selectedCategory)
+
+  return (
+    // <NavigationContainer>
     <Navigator
       initialRouteName='Categories'
       screenOptions={{
+        header: (({route}) => (<Header title='Codervak' subtitle={route.name==="Categories" ? "Home": selectedCategory}/>)),
         headerStyle: {
           backgroundColor: colors.lightGray
         },
@@ -22,11 +29,14 @@ const ShopStackNavigator = () =>
         }
       }}
     >
-      <Screen name='Categories' component={CategoriesScreen} />
+      <Screen name='Categories' component={CategoriesScreen}/>
       <Screen name='Products' component={ProductsScreen}/>
       <Screen name='ProductDetails' component={ProductDetailsScreen}/>
     </Navigator>
   // </NavigationContainer>
+  )
+}
+  
 
 export default ShopStackNavigator;
 
