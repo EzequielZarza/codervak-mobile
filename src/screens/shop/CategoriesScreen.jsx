@@ -12,7 +12,7 @@ const CategoriesScreen = ({navigation: {navigate}}) => {
 
   const dispatch = useDispatch();
 
-  const handleCSelectedCategory = ({title}) => {
+  const handleSelectedCategory = ({title}) => {
     dispatch(setSelectedCategory(title))
     navigate('Products', { category: title})
   };
@@ -31,7 +31,7 @@ const CategoriesScreen = ({navigation: {navigate}}) => {
   
 
   const renderCategoriesItem = (({item}) => (
-    <Pressable onPress={() => handleCSelectedCategory(item)}>
+    <Pressable onPress={() => handleSelectedCategory(item)}>
       <FlatCard>
         <CodervakTypography>{item?.title}</CodervakTypography>
         <Image width={100} height={50} resizeMode='contain' source={{uri: item?.image}}></Image>

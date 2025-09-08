@@ -5,12 +5,15 @@ import FlatCard from '../../FlatCard';
 import { colors } from "../../global/colors";
 import Search from "../../Search";
 import CodervakTypography from "../../CodervakTypography";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setSelectedProduct } from '../../store/slices/shopSlice';
 
 const ProductsScreen = ({ navigation: {navigate}}) => {
 
-  const [selectedProducts, setSelectedProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [keyword, setKeyword] = useState('')
+
+  const dispatch = useDispatch();
 
   const selectedCategory = useSelector(({shopReducer: {selectedCategory}}) => selectedCategory)
 
@@ -18,14 +21,20 @@ const ProductsScreen = ({ navigation: {navigate}}) => {
     const productsInCategory = products.filter(({category}) => category.toLowerCase() === selectedCategory.toLowerCase());
     if(keyword){
       const productsInCategoryByKeyword = productsInCategory.filter(({title}) => title.toLowerCase().includes(keyword.toLowerCase()));
-      setSelectedProducts(productsInCategoryByKeyword)
+      setFilteredProducts(productsInCategoryByKeyword)
     }else{
-      setSelectedProducts(productsInCategory);
+      setFilteredProducts(productsInCategory);
     }
   },[keyword]);
 
+  const handleSelectedProduct = (product) => {
+      dispatch(setSelectedProduct(product))
+      navigate('ProductDetails')//, { category: title})
+    };
+
   const renderCategoriesItem = (({item}) => (
-    <Pressable onPress={() => navigate('ProductDetails')}>
+    <Pressable onPress={() => handleSelectedProduct(item)}>
+      {/* navigate('ProductDetails')}> */}
     <View style={styles.container}>
       <FlatCard>
         <View style={styles.container}>
@@ -57,7 +66,7 @@ const ProductsScreen = ({ navigation: {navigate}}) => {
     <Search setKeyword={setKeyword}/>
     </View>
     <FlatList
-      data={selectedProducts}
+      data={filteredProducts}
       renderItem={renderCategoriesItem}
       keyExtractor={item=>item.id}
     />
