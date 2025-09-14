@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, FlatList, Image, Pressable, Button } from "react-native";
-import products from '../../data/products.json';
+// import products from '../../data/products.json';
 import { useEffect, useState } from 'react';
 import FlatCard from '../../FlatCard';
 import { colors } from "../../global/colors";
@@ -7,25 +7,28 @@ import Search from "../../Search";
 import CodervakTypography from "../../CodervakTypography";
 import { useSelector, useDispatch } from "react-redux";
 import { setSelectedProduct } from '../../store/slices/shopSlice';
+import { useProductsByCategoryQuery } from "../../services/shopApi";
 
 const ProductsScreen = ({ navigation: {navigate}}) => {
 
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [keyword, setKeyword] = useState('')
+  const [keyword, setKeyword] = useState('');
 
   const dispatch = useDispatch();
 
-  const selectedCategory = useSelector(({shopReducer: {selectedCategory}}) => selectedCategory)
+  const selectedCategory = useSelector(({shopReducer: {selectedCategory}}) => selectedCategory);
+  const { data: productsInCategory } = useProductsByCategoryQuery(selectedCategory);
+
 
   useEffect(() => {
-    const productsInCategory = products.filter(({category}) => category.toLowerCase() === selectedCategory.toLowerCase());
+    // const productsInCategory = products.filter(({category}) => category.toLowerCase() === selectedCategory.toLowerCase());
     if(keyword){
       const productsInCategoryByKeyword = productsInCategory.filter(({title}) => title.toLowerCase().includes(keyword.toLowerCase()));
       setFilteredProducts(productsInCategoryByKeyword)
     }else{
       setFilteredProducts(productsInCategory);
     }
-  },[keyword]);
+  },[keyword, selectedCategory, productsInCategory]);
 
   const handleSelectedProduct = (product) => {
       dispatch(setSelectedProduct(product))

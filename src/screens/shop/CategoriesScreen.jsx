@@ -1,14 +1,20 @@
 import { Text, FlatList, Image, View, StyleSheet, Pressable } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import products from '../../data/products.json'
+// import products from '../../data/products.json'
 import FlatCard from '../../FlatCard';
 import { useState, useEffect } from 'react';
 import CodervakTypography from '../../CodervakTypography';
 import { setSelectedCategory } from '../../store/slices/shopSlice';
+import { useCategoriesQuery, useProductsQuery } from '../../services/shopApi';
+import Spinner from '../../Spinner';
 
 const CategoriesScreen = ({navigation: {navigate}}) => {
 
-  const categories = useSelector(({shopReducer: {categories}}) => categories);
+  //const categories = useSelector(({shopReducer: {categories}}) => categories);
+  const {data: categories, isLoading, error} = useCategoriesQuery()
+  const {data: products, isLoading: isLoadingProducts} = useProductsQuery()
+
+  console.log('los products', isLoadingProducts, products);
 
   const dispatch = useDispatch();
 
@@ -19,15 +25,15 @@ const CategoriesScreen = ({navigation: {navigate}}) => {
 
   const [dynamicCategories, setDynamicCategories] = useState([])
   useEffect(() => {
-    const shuffledProducts = [...products].sort(() => Math.random() - 0.5);
-    const updatedCategories = categories.reduce((accum,curr) => {
-      const filteredProduct = shuffledProducts.find(product => product.category === curr.title);
-      const updatedCategory = {...curr, image: filteredProduct.image}
+    const shuffledProducts = isLoadingProducts ? [] : [...products].sort(() => Math.random() - 0.5) ;
+    const updatedCategories = categories?.reduce((accum,curr) => {
+      const filteredProduct = shuffledProducts.find(product => product?.category === curr.title);
+      const updatedCategory = {...curr, image: filteredProduct?.image}
       accum = [...accum, updatedCategory]
       return accum
     },[])
     setDynamicCategories(updatedCategories)
-  },[])
+  },[products, categories])
   
 
   const renderCategoriesItem = (({item}) => (
@@ -39,9 +45,9 @@ const CategoriesScreen = ({navigation: {navigate}}) => {
   </Pressable>
   ))
 
-  return (
+  return (isLoading ? <Spinner/> :
     <FlatList
-      data={dynamicCategories.length > 0 ? dynamicCategories : categories}
+      data={dynamicCategories?.length > 0 ? dynamicCategories : categories}
       renderItem={renderCategoriesItem}
       keyExtractor={item=>item.id}
     />
