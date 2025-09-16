@@ -6,6 +6,7 @@ import TabsNavigator from './src/navigation/tabs/TabsNavigator';
 import { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { store } from './src/store';
+import MainNavigator from './src/navigation/MainNavigator';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -32,7 +33,7 @@ export default function App() {
     <>
       <Provider store={store}>
         {/* <Header title={'Codervak'}/> */}
-        <TabsNavigator/>
+        <MainNavigator/>
       </Provider>
     </>
   );
