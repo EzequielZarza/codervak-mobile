@@ -12,12 +12,12 @@ const userSlice = createSlice({
         setUserEmail: (state, action) => {
             state.email = action.payload
         },
-        // setLocalId: (state,action) => {
-        //     state.localId = action.payload
-        // },
-        // setImage: (state,action) => {
-        //     state.image = action.payload
-        // },
+        setLocalId: (state,action) => {
+            state.localId = action.payload
+        },
+        setImage: (state,action) => {
+            state.image = action.payload
+        },
         // clearUser:(state) => {
         //     state.email = ""
         //     state.localId=""
@@ -26,6 +26,6 @@ const userSlice = createSlice({
     }
 })
 
-export const { setUserEmail } = userSlice.actions
+export const { setUserEmail, setImage, setLocalId } = userSlice.actions
 
 export default userSlice.reducer

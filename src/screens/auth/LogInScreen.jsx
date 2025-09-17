@@ -3,7 +3,7 @@ import { colors } from '../../global/colors';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLogInMutation } from '../../services/authApi';
-import { setUserEmail } from '../../store/slices/userSlice';
+import { setUserEmail, setLocalId } from '../../store/slices/userSlice';
 
 const textInputWidth = Dimensions.get('window').width * 0.7
 
@@ -12,8 +12,8 @@ const LogInScreen = ({ navigation, route }) => {
     const [password, setPassword] = useState("")
     const [persistSession, setPersistSession] = useState(false)
     const [triggerLogIn, result] = useLogInMutation()
-
-    const dispatch = useDispatch()
+    const [loginError, setLoginError] = useState(false)
+    const dispatch = useDispatch();
 
 
     const onSubmit = () => {
@@ -23,7 +23,11 @@ const LogInScreen = ({ navigation, route }) => {
     useEffect(() => {
       console.log('Resultado del login', result)
       if(result.status==='fulfilled'){
-        dispatch(setUserEmail(result.data.email))
+        dispatch(setUserEmail(result.data.email));
+        dispatch(setLocalId(result.data.localId))
+      }
+      if(result.status==='rejected'){
+        setLoginError(true);
       }
     },[result])
 
@@ -45,6 +49,7 @@ const LogInScreen = ({ navigation, route }) => {
                     style={styles.textInput}
                     secureTextEntry
                 />
+                {loginError && <Text style={styles.loginErrorText}>Wrong user or password, please try again</Text>}
             </View>
             <View style={styles.footTextContainer}>
                 <Text style={styles.whiteText}>No Account yet? Create one!</Text>
@@ -115,6 +120,9 @@ const styles = StyleSheet.create({
     },
     whiteText: {
         color: colors.white
+    },
+    loginErrorText: {
+        color: colors.red
     },
     underLineText: {
         textDecorationLine: 'underline',
