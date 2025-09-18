@@ -3,6 +3,7 @@ import { colors } from '../../global/colors'
 import { useSelector,useDispatch } from 'react-redux'
 import { addItemToCart } from '../../store/slices/cartSlice'
 import { useState } from 'react'
+import CodervakTypography from "../../CodervakTypography";
   
 const ProductDetailsScreen = () => {
     const product = useSelector(state=>state.shopReducer.selectedProduct)
@@ -21,19 +22,7 @@ const ProductDetailsScreen = () => {
                 height={width * .7}
                 resizeMode='contain'
             />
-            <Text style={styles?.longDescription}>{product?.longDescription}</Text>
-            <View style={styles.tagsContainer}>
-                <View style={styles.tags}>
-                    <Text style={styles.tagText}>Tags : </Text>
-                    {
-                        product.tags?.map(tag => <Text key={Math.random()} style={styles.tagText}>{tag}</Text>)
-                    }
-                </View>
-
-                {
-                    product.discount > 0 && <View style={styles.discount}><Text style={styles.discountText}>-{product.discount}%</Text></View>
-                }
-            </View>
+            <CodervakTypography style={{textAlign: "center", marginLeft: 8}}>{product?.description}</CodervakTypography>
             {
                 stock <= 0 && <Text style={styles.noStockText}>Sin Stock</Text>
             }

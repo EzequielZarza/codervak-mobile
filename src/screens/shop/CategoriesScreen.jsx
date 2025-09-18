@@ -14,7 +14,6 @@ const CategoriesScreen = ({navigation: {navigate}}) => {
   const {data: categories, isLoading, error} = useCategoriesQuery()
   const {data: products, isLoading: isLoadingProducts} = useProductsQuery()
 
-  console.log('los products', isLoadingProducts, products);
 
   const dispatch = useDispatch();
 

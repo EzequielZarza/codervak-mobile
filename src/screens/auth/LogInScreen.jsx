@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLogInMutation } from '../../services/authApi';
 import { setUserEmail, setLocalId } from '../../store/slices/userSlice';
+import { saveSession, clearSession } from '../../database';
 
 const textInputWidth = Dimensions.get('window').width * 0.7
 
@@ -21,14 +22,26 @@ const LogInScreen = ({ navigation, route }) => {
     }
 
     useEffect(() => {
-      console.log('Resultado del login', result)
-      if(result.status==='fulfilled'){
-        dispatch(setUserEmail(result.data.email));
-        dispatch(setLocalId(result.data.localId))
+      (async () => {
+        console.log('Resultado del login', result)
+        if(result.status==='fulfilled'){
+        try{
+          if(persistSession){
+            await saveSession(result.data.localId,result.data.email);
+            dispatch(setUserEmail(result.data.email));
+            dispatch(setLocalId(result.data.localId));
+          } else {
+            await clearSession();
+            dispatch(setUserEmail(result.data.email));
+            dispatch(setLocalId(result.data.localId));
+          }
+        }catch(error){
+            console.log('Error saving session: ', error)
+        }
       }
       if(result.status==='rejected'){
         setLoginError(true);
-      }
+      }})()
     },[result])
 
     return (

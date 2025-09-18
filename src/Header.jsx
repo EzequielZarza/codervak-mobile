@@ -5,9 +5,20 @@ import { useDispatch } from "react-redux";
 import CodervakTypography from "./CodervakTypography";
 import { useNavigation } from '@react-navigation/native'
 import  { Entypo } from '@expo/vector-icons';
+import { clearSession } from "./database";
+import { setUserEmail, setLocalId } from './store/slices/userSlice';
 
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 const Header = ({title, subtitle}) => {
+
+  const signOut = async () => {
+      console.log('me voyyy')
+      await clearSession();
+      dispatch(setUserEmail(userResult.data.email));
+      dispatch(setLocalId(userResult.data.localId));
+      goBack()
+    }
 
   const dispatch = useDispatch();
   const { navigate, canGoBack, goBack } = useNavigation()
@@ -27,7 +38,17 @@ const Header = ({title, subtitle}) => {
             {/* <CodervakTypography fontFamily='Space-Mono-Bold' style={styles.buttonText}> Volver al menu principal</CodervakTypography> */}
           </View>
         </Pressable>
+        
       }
+          {/* <Pressable
+          onPress={signOut}
+          style={styles.button}
+        > 
+          <View style={styles.signOutButton}>    
+            <FontAwesome name="sign-out" size={24} color="black" />
+            <Text style={styles.address}>Sign out</Text>
+          </View>
+        </Pressable> */}
     </View>
   )
 }
@@ -58,5 +79,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: colors.black,
     fontFamily: 'Space-Mono-Bold'
+  },
+  signOutButton: {
+    padding: 8,
+    paddingHorizontal: 16,
+    backgroundColor: colors.darkBlue,
+    borderRadius: 16,
+    marginTop: 32,
+    alignItems: 'center'
   }
 })

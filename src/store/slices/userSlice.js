@@ -18,14 +18,14 @@ const userSlice = createSlice({
         setImage: (state,action) => {
             state.image = action.payload
         },
-        // clearUser:(state) => {
-        //     state.email = ""
-        //     state.localId=""
-        //     state.image=""
-        // }
+        clearUser:(state) => {
+          state.email = ""
+          state.localId=""
+          state.image=""
+        }
     }
 })
 
-export const { setUserEmail, setImage, setLocalId } = userSlice.actions
+export const { setUserEmail, setImage, setLocalId, clearUser } = userSlice.actions
 
 export default userSlice.reducer

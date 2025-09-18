@@ -45,7 +45,6 @@ const ProductsScreen = ({ navigation: {navigate}}) => {
         </View>
         <View style={styles.container}>
           <CodervakTypography fontFamily='Space-Mono-Bold'>{item?.title}</CodervakTypography>
-          <CodervakTypography style={{textAlign: "center", marginLeft: 8}}>{item?.description}</CodervakTypography>
           <View style={{marginTop: 16}}>
           <CodervakTypography>{`Precio: ${item?.price} US$`}</CodervakTypography>
           <CodervakTypography>{`Stock: ${item?.stock}`}</CodervakTypography>

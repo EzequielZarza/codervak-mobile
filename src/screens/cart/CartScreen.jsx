@@ -5,23 +5,39 @@ import FlatCard from '../../FlatCard'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useSelector, useDispatch } from 'react-redux'
 import { clearCart, removeItem } from '../../store/slices/cartSlice'
-
+import { usePostPurchaseMutation } from '../../services/shopApi';
+import { useState } from 'react';
 
 const CartScreen = () => {
+
+  const [ triggerPurchase ] = usePostPurchaseMutation()
   const cartItems = useSelector(state=>state.cartReducer.cartItems)
   const total = useSelector(state=>state.cartReducer.total);
+  const [purchaseDone, setPurchaseDone ] = useState(false)
 
   const dispatch = useDispatch();
+
+  const purchase = () => {
+    console.log('compranding')
+    triggerPurchase({products: cartItems, total})
+    setPurchaseDone(true)
+    dispatch(clearCart())
+  }
+
+  const removeItems = () => {
+    dispatch(clearCart());
+    setPurchaseDone(false)
+  }
   
   const FooterComponent = () => (
     <View style={styles.footerContainer}>
       <Text style={styles.footerTotal}>Total: $ {total} </Text>
-      <Pressable style={styles.confirmButton}>
+      <Pressable onPress={purchase}style={styles.confirmButton}>
         <Text style={styles.confirmButtonText}>Confirmar</Text>
       </Pressable>
       <Pressable
         style={styles.cleanCartButton}
-        onPress={() => dispatch(clearCart())}
+        onPress={removeItems}
       >
         <Text style={styles.confirmButtonText}>Vaciar carrito</Text>
       </Pressable>
@@ -64,7 +80,11 @@ const CartScreen = () => {
           />
 
           :
-          <Text>Aún no hay productos en el carrito</Text>
+          purchaseDone ? 
+          <Text style={styles.cartScreenTitle}>Compra realizada con exito!</Text>
+
+          :
+          <Text style={styles.cartScreenTitle}>Aún no hay productos en el carrito</Text>
       }
     </>
   )

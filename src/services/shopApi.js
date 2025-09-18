@@ -11,8 +11,21 @@ export const shopApi = createApi({
     productsByCategory: builder.query({
       query: (category) => `products.json?orderBy="category"&equalTo="${category}"`,
       transformResponse: (response) => Object.values(response)
-    })
+    }),
+    postPurchase: builder.mutation({
+      query: (data) => ({
+          url: `purchase/purchase-cost-${data.total}.json`,
+          method: 'POST',
+          body: {
+              data
+          }
+      })
+  })
   })
 });
 
-export const { useCategoriesQuery, useProductsQuery, useProductsByCategoryQuery } = shopApi;
+export const {
+  useCategoriesQuery,
+  useProductsQuery,
+  useProductsByCategoryQuery,
+  usePostPurchaseMutation } = shopApi;

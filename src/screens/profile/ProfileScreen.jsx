@@ -5,11 +5,13 @@ import { useEffect, useState } from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import * as ImagePicker from 'expo-image-picker';
 import { usePutProfilePictureMutation } from '../../services/profileApi'
-import { setImage } from '../../store/slices/userSlice';
+import { setImage, setUserEmail, setLocalId } from '../../store/slices/userSlice';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
+import { useLogInMutation } from '../../services/authApi'
 
-const ProfileScreen = () => {
+const ProfileScreen = ({ navigation, route }) => {
+
   const [location, setLocation] = useState(null);
   const [errorMessage, setErrorMessage] = useState('')
   const [locationLoaded, setLocationLoaded] = useState(false)
@@ -19,6 +21,8 @@ const ProfileScreen = () => {
   const localId = useSelector(state=>state.userReducer.localId)
   const image = useSelector(state=>state.userReducer.image)
   const [triggerPutProfilePicture, result] = usePutProfilePictureMutation() 
+  const [userResult] = useLogInMutation()
+  
   const dispatch = useDispatch()
 
   const pickImage = async () => {
@@ -37,6 +41,7 @@ const ProfileScreen = () => {
       triggerPutProfilePicture({localId:localId,image:imgBase64 })
     }
   }
+
 
   useEffect(() => {
     const getCurrentLocation = async () => {
@@ -82,29 +87,27 @@ const ProfileScreen = () => {
       <Text style={styles.profileData}>Email: {user} </Text>
       <View style={styles.mapContainer}>
         {
-            location
+          location
+            ?
+            <MapView
+                style={styles.map}
+                initialRegion={{
+                    latitude: location.coords.latitude,
+                    longitude: location.coords.longitude,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                }}
+            >
+                <Marker coordinate={{ "latitude": location.coords.latitude, "longitude": location.coords.longitude }} title={"Mundo Geek"} />
+            </MapView>
+            :
+            (
+              locationLoaded
                 ?
-                <MapView
-                    style={styles.map}
-                    initialRegion={{
-                        latitude: location.coords.latitude,
-                        longitude: location.coords.longitude,
-                        latitudeDelta: 0.0922,
-                        longitudeDelta: 0.0421,
-                    }}
-                >
-                    <Marker coordinate={{ "latitude": location.coords.latitude, "longitude": location.coords.longitude }} title={"Mundo Geek"} />
-                </MapView>
+                <Text>Hubo un problema al obtener la ubicación</Text>
                 :
-                (
-                    locationLoaded
-                        ?
-                        <Text>Hubo un problema al obtener la ubicación</Text>
-                        :
-                        <ActivityIndicator />
-                )
-
-
+                <ActivityIndicator />
+            )
         }
         <View style={styles.placeDescriptionContainer}>
             <View style={styles.addressContainer}>
@@ -118,6 +121,7 @@ const ProfileScreen = () => {
             <Text style={styles.address}>{address || ""}</Text>
         </View>
     </View>
+
     </View>
   )
 }
