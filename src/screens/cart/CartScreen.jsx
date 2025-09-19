@@ -18,7 +18,6 @@ const CartScreen = () => {
   const dispatch = useDispatch();
 
   const purchase = () => {
-    console.log('compranding')
     triggerPurchase({products: cartItems, total})
     setPurchaseDone(true)
     dispatch(clearCart())

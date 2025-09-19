@@ -13,7 +13,6 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 const Header = ({title, subtitle}) => {
 
   const signOut = async () => {
-      console.log('me voyyy')
       await clearSession();
       dispatch(setUserEmail(userResult.data.email));
       dispatch(setLocalId(userResult.data.localId));
@@ -35,10 +34,8 @@ const Header = ({title, subtitle}) => {
         > 
           <View style={styles.smallContainer}>
             <Entypo name="back" size={24} color="black" />
-            {/* <CodervakTypography fontFamily='Space-Mono-Bold' style={styles.buttonText}> Volver al menu principal</CodervakTypography> */}
           </View>
         </Pressable>
-        
       }
           {/* <Pressable
           onPress={signOut}

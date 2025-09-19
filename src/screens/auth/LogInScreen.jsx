@@ -23,7 +23,6 @@ const LogInScreen = ({ navigation, route }) => {
 
     useEffect(() => {
       (async () => {
-        console.log('Resultado del login', result)
         if(result.status==='fulfilled'){
         try{
           if(persistSession){

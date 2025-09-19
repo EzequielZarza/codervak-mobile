@@ -11,7 +11,6 @@ const cartSlice = createSlice({
   reducers: {
     addItemToCart: (state, actions) => {
       const {product, quantity, stock} = actions.payload;
-      console.log('que pase', product, quantity)
 
       const productInCart = state.cartItems.find(({id}) => id===product.id);
       if(!productInCart){
@@ -23,11 +22,8 @@ const cartSlice = createSlice({
       }
       state.udpatedAt = new Date().toLocaleDateString()
       state.total = state.cartItems.reduce((accum, curr) => accum + curr.price*curr.quantity, 0);
-      console.log('que tengo hasta ahora', state.cartItems)
-      console.log('El total', state.total)
     },
     removeItem: (state, actions) => {
-      console.log('el payload', actions.payload)
       state.cartItems = state.cartItems.filter(({id}) => id!==actions.payload.id);
       state.total = state.cartItems.reduce((accum, curr) => accum + curr.price*curr.quantity, 0);
       state.udpatedAt = new Date().toLocaleDateString()

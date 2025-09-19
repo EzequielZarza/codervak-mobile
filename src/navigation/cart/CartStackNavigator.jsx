@@ -7,7 +7,6 @@ import Header from "../../Header";
 const {Navigator, Screen} = createNativeStackNavigator();
 
 const CartStackNavigator = () => 
-  // <NavigationContainer>
     <Navigator
       initialRouteName='Cart'
       screenOptions={{
@@ -26,6 +25,5 @@ const CartStackNavigator = () =>
     >
       <Screen name='Cart' component={CartScreen} />
     </Navigator>
-  // </NavigationContainer>
 
 export default CartStackNavigator;

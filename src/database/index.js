@@ -9,7 +9,6 @@ export const initDatabase = async () => {
 }
 
 export const initSessionTable = async () => {
-  //console.log("Iniciando tabla de sesiones")
   await initDatabase();
   await db.execAsync(`
   CREATE TABLE IF NOT EXISTS session (
@@ -22,19 +21,18 @@ export const initSessionTable = async () => {
 export const saveSession = async (localId, email) => {
   await initDatabase();
   await db.runAsync(`DELETE FROM session
-    WHERE id = (SELECT MIN(id) FROM session)`); // OJO!!! reemplaza sesión anterior. SIEMPRE USAR WHERE. En este caso no es necesario
+    WHERE id = (SELECT MIN(id) FROM session)`); 
   await db.runAsync('INSERT INTO session (localId, email) VALUES (?, ?);', [localId, email]);
 }
 
 export const getSession = async () => {
   await initDatabase();
-  const result = await db.getAllAsync('SELECT * FROM session LIMIT 1;'); //En este caso no hago validaciones
-  console.log("Obteniendo datos de DB",result)
+  const result = await db.getAllAsync('SELECT * FROM session LIMIT 1;');
   return result.length > 0 ? result[0] : null;
 };
 
 export const clearSession = async () => {
   await initDatabase();
   await db.runAsync(`DELETE FROM session
-    WHERE id = (SELECT MIN(id) FROM session)`); //SIEMPRE USAR WHERE. En este caso no es necesario
+    WHERE id = (SELECT MIN(id) FROM session)`); 
 };

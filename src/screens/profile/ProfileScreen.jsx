@@ -34,7 +34,6 @@ const ProfileScreen = ({ navigation, route }) => {
       quality: 0.7,
       base64: true
     })
-    //console.log(result)
     if(!result.canceled){
       const imgBase64 = `data:image/jpeg;base64,${result.assets[0].base64}`
       dispatch(setImage(imgBase64))
@@ -57,7 +56,6 @@ const ProfileScreen = ({ navigation, route }) => {
               `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.coords.latitude},${location.coords.longitude}&key=${process.env.EXPO_PUBLIC_MAPS_KEY}`
           );
           const data = await response.json()
-          //console.log("Data desde geocoding", data)
           setLocation(location)
           setAddress(data.results[0].formatted_address)
         }
