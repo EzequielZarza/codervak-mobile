@@ -64,7 +64,7 @@ const LogInScreen = ({ navigation, route }) => {
                 />
                 {loginError && <Text style={styles.loginErrorText}>Wrong user or password, please try again</Text>}
             </View>
-            <View style={styles.footTextContainer}>
+            {/* <View style={styles.footTextContainer}>
                 <Text style={styles.whiteText}>No Account yet? Create one!</Text>
                 <Pressable onPress={() => navigation.navigate('Signup')}>
                     <Text style={
@@ -76,7 +76,7 @@ const LogInScreen = ({ navigation, route }) => {
                         Crea una
                     </Text>
                 </Pressable>
-            </View>
+            </View> */}
 
             <Pressable style={styles.btn} onPress={onSubmit}><Text style={styles.btnText}>Iniciar sesión</Text></Pressable>
             <View style={styles.rememberMe}>
