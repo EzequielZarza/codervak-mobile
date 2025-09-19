@@ -97,14 +97,6 @@ Por ultimo, se tienen componentes usados en las distintas pantallas y navegadore
   5. Search
   6. Spinner
 
-## Demostracion
-
-![](https://github.com/EzequielZarza/PreEntrega1Zarza/blob/main/demo-gifs/Codervak-Peek1.gif)
-
-
-![](https://github.com/EzequielZarza/PreEntrega1Zarza/blob/main/demo-gifs/Codervak-Peek2.gif)
-
-
 ## Comandos
 
 Para installar las dependecias:
@@ -117,3 +109,24 @@ Para correr la aplicacion:
 
 Abrir mediante la App Expo Go en un dispositivo celular, escaneando el codigo QR que genera el comando npm start, o mediante el Virtual Device Manager de Android Studio 
 
+## Demostracion
+
+![](https://github.com/EzequielZarza/codervak-mobile/blob/master/imagenes-demo/1000074041.png?raw=true)
+
+![](https://github.com/EzequielZarza/codervak-mobile/blob/master/imagenes-demo/1000074042.png?raw=true)
+
+![](https://github.com/EzequielZarza/codervak-mobile/blob/master/imagenes-demo/1000074043.png?raw=true)
+
+![](https://github.com/EzequielZarza/codervak-mobile/blob/master/imagenes-demo/1000074044.png?raw=true)
+
+![](https://github.com/EzequielZarza/codervak-mobile/blob/master/imagenes-demo/1000074045.png?raw=true)
+
+![](https://github.com/EzequielZarza/codervak-mobile/blob/master/imagenes-demo/1000074046.png?raw=true)
+
+![](https://github.com/EzequielZarza/codervak-mobile/blob/master/imagenes-demo/1000074047.png?raw=true)
+
+![](https://github.com/EzequielZarza/codervak-mobile/blob/master/imagenes-demo/1000074048.png?raw=true)
+
+![](https://github.com/EzequielZarza/codervak-mobile/blob/master/imagenes-demo/1000074049.png?raw=true)
+
+![](https://github.com/EzequielZarza/codervak-mobile/blob/master/imagenes-demo/1000074050.png?raw=true)
