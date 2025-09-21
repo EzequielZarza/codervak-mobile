@@ -111,7 +111,8 @@ Abrir mediante la App Expo Go en un dispositivo celular, escaneando el codigo QR
 
 ### APK
 
-Para el archivo .apk, abrir en un dispositivo Android el [siguiente link](https://expo.dev/accounts/ezequielzarza/projects/codervak-mobile/builds/edeb92fd-a290-4da6-9309-0b87ba008548)
+Para el archivo .apk, abrir en un dispositivo Android el [siguiente link](https://expo.dev/accounts/ezequielzarza/projects/codervak-mobile/builds/499a819a-80b1-4bac-8937-81355885a2d7)
+e instalar la aplicacion
 
 ## Demostracion
 
