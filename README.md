@@ -107,7 +107,11 @@ Para correr la aplicacion:
 
 ### `npm start`
 
-Abrir mediante la App Expo Go en un dispositivo celular, escaneando el codigo QR que genera el comando npm start, o mediante el Virtual Device Manager de Android Studio 
+Abrir mediante la App Expo Go en un dispositivo celular, escaneando el codigo QR que genera el comando npm start, o mediante el Virtual Device Manager de Android Studio
+
+### APK
+
+Para el archivo .apk, abrir en un dispositivo Android el [siguiente link](https://expo.dev/accounts/ezequielzarza/projects/codervak-mobile/builds/edeb92fd-a290-4da6-9309-0b87ba008548)
 
 ## Demostracion
 
